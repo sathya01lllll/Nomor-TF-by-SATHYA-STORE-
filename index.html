@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 150px;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            text-align: left;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            margin: 15% auto;
+            display: block;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Transfer Payment</h1>
+        
+        <h2>DANA</h2>
+        <img src="https://telegra.ph/file/55a164bce92a1e323acb7.jpg" alt="DANA QR Code" onclick="openModal(this.src)">
+        <br>
+        <button class="button" onclick="copyText('081329731976')">Salin nomor DANA</button>
+
+        <h2>GOPAY</h2>
+        <img src="https://telegra.ph/file/7c03c184b5596f651ec8b.jpg" alt="GOPAY QR Code" onclick="openModal(this.src)">
+        <br>
+        <button class="button" onclick="copyText('0813297319760')">Salin nomor GOPAY</button>
+
+        <h2>OVO</h2>
+        <br>
+        <button class="button" onclick="copyText('081329731976')">Salin nomor OVO</button>
+
+        <h2>Saweria</h2>
+        <br>
+        <a href="https://saweria.co/sathyastore" class="button">Go to Saweria</a>
+
+        <div class="note">
+            <strong>NOTE:</strong>
+            <ul>
+                <li>Ketika Selesai Transfer, Harap Kirimkan Bukti Berupa Hasil Transfer (screenshot / id transaksi).</li>
+                _____________________________
+                <li>Pesanan Akan Di Proses Setelah Pembayaran Terkonfirmasi.</li>
+                _____________________________
+                <li>Simpan Bukti Transfer Untuk Claim Garansi (selama ada bukti transfer, garansi bisa di claim).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal for zoom effect -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="imgModal">
+    </div>
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor berhasil disalin: ' + text);
+            }, () => {
+                alert('Gagal menyalin nomor');
+            });
+        }
+
+        function openModal(src) {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('imgModal').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
